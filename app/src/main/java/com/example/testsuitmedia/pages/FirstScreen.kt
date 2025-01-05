@@ -61,13 +61,13 @@ fun FirstScreen(modifier: Modifier = Modifier, navController: NavController) {
     var name by remember { mutableStateOf("") }
     var palindrome by remember { mutableStateOf("") }
     var openAlertDialog by remember { mutableStateOf(false) }
-    var dialogText:String
-    var dialogIcon:ImageVector
+    var dialogText: String
+    var dialogIcon: ImageVector
     val context = LocalContext.current
 
     fun isPalindrome(value: String): Boolean {
         val cleanedValue = value.replace(" ", "")
-        return cleanedValue == cleanedValue.reversed()
+        return cleanedValue.equals(cleanedValue.reversed(), ignoreCase = true)
     }
 
     Box(modifier = modifier.fillMaxSize()) {
@@ -198,7 +198,7 @@ fun SimpleButton(modifier: Modifier = Modifier, text: String, onClick: () -> Uni
     val fontFamily = FontFamily(
         Font(R.font.poppins_regular, FontWeight.Normal),
         Font(R.font.poppins_medium, FontWeight.Medium),
-        )
+    )
     Button(
         modifier = Modifier
             .fillMaxWidth()
