@@ -66,7 +66,8 @@ fun FirstScreen(modifier: Modifier = Modifier, navController: NavController) {
     val context = LocalContext.current
 
     fun isPalindrome(value: String): Boolean {
-        return value.equals(value.reversed(), true)
+        val cleanedValue = value.replace(" ", "")
+        return cleanedValue == cleanedValue.reversed()
     }
 
     Box(modifier = modifier.fillMaxSize()) {
@@ -116,10 +117,10 @@ fun FirstScreen(modifier: Modifier = Modifier, navController: NavController) {
                 )
                 if (openAlertDialog) {
                     if (isPalindrome(palindrome)) {
-                        dialogText = "$palindrome is a palindrome"
+                        dialogText = "$palindrome isPalindrome"
                         dialogIcon = Icons.Default.Check
                     } else {
-                        dialogText = "$palindrome isn't a palindrome"
+                        dialogText = "$palindrome is not palindrome"
                         dialogIcon = Icons.Default.Close
                     }
                     PalindromeDialog(
